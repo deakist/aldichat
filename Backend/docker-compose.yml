@@ -1,0 +1,37 @@
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  db:
+    image: "mysql"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    networks:
+      - app-tier
+    environment:
+      MYSQL_DATABASE: aldi_chat
+      MYSQL_ALLOW_EMPTY_PASSWORD: ok
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: webnode
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_HOST: "%"
+    volumes:
+      - db-data:/db
+      - ./sql/SQLChanges.sql:/docker-entrypoint-initdb.d/1.sql
+  web:
+    depends_on:
+      - db
+    build: .
+    ports:
+      - 8080:8080
+    networks:
+      - app-tier
+    restart: always
+
+volumes:
+  db-data:

@@ -1,0 +1,39 @@
+<div class="ChatDialog">
+	<div class="MenuCol">
+		<b>
+			{{ this.username }}
+		</b>
+		<hr />
+		<b>Channels</b>
+		<div [ngClass]="this.getClassnamesOfChannel('')" (click)="this.changeChannel('')">
+			{{ this.activeChannel == "" ? "-> " : "" }}General
+		</div>
+		<hr />
+		<b>Users</b>
+		<div class="UserListDiv">
+			<div
+				[ngClass]="this.getClassnamesOfChannel(curUser)"
+				*ngFor="let curUser of this.userList"
+				(click)="this.changeChannel(curUser)"
+			>
+				{{ this.activeChannel == curUser ? "-> " : "" }}{{ curUser }}
+			</div>
+		</div>
+		<hr />
+		<div>
+			<button mat-flat-button color="primary" (click)="this.handleOnLogout()" style="width: 100%">Logout</button>
+		</div>
+	</div>
+	<div class="ChatCol">
+		<div class="MessageList" #chatContainer>
+			<div *ngFor="let curMsg of this.getMessagesOfActiveChannel()">
+				{{ curMsg.senderUsername ? curMsg.senderUsername : "Deleted User" }}: {{ curMsg.message }}
+			</div>
+		</div>
+		<form [formGroup]="form" (ngSubmit)="this.handleOnSubmit()">
+			<mat-form-field style="width: 100%">
+				<input type="text" matInput placeholder="Type here" formControlName="message" />
+			</mat-form-field>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+.ChatDialog {
+	border-radius: 0.5rem;
+	border: 1px solid;
+	display: block;
+	margin: auto;
+
+	width: min(64rem, 90%);
+	background: white;
+	box-shadow: 0px -1px 20px 0px #6e6e6e;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.MenuCol {
+	display: inline-block;
+	margin: 1rem;
+	width: 20%;
+}
+
+.ChatCol {
+	display: inline-block;
+	width: 76%;
+}
+
+.MessageList {
+	max-height: min(30rem, 50vh);
+	overflow-y: auto;
+}
+
+.UserListDiv {
+	height: 23rem;
+	overflow-y: auto;
+}
+
+.SelectedChannel {
+	background-color: #4396d0;
+	border-radius: 0.1rem;
+	padding: 0.1rem;
+	color: white;
+}
+
+.Channel {
+	cursor: pointer;
+	padding: 0.1rem;
+}
+
+.Channel:hover {
+	background-color: #9fc6e2;
+}
+
+.BoldChannelName {
+	font-weight: bold;
+}

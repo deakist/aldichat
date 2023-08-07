@@ -1,0 +1,8 @@
+export enum WebsocketChannels {
+	LOGIN = "LOGIN",
+	LOGOUT = "LOGOUT",
+	COMMAND = "COMMAND",
+	SEND_MESSAGE = "SENDMESSAGE",
+	MESSAGES = "MESSAGES",
+	USERS = "USERS",
+}
